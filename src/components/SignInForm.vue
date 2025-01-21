@@ -4,7 +4,7 @@ import { useRouter } from "vue-router";
 import { UserService } from "../services/UserService.ts";
 import User from "../models/User.ts";
 
-const credentials = reactive(new User("","","",""));
+const credentials = reactive(new User(0,"","",""));
 const { result } = UserService.login(credentials);
 
 const router = useRouter();
