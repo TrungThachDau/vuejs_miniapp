@@ -1,10 +1,10 @@
 export default class User {
-    id: number | null;
+    id: number;
     username: string | null;
     password: string | null;
     retypePassword: string | null;
 
-    constructor(id: number | null, username: string | null, password: string | null, retypePassword: string | null) {
+    constructor(id: number , username: string | null, password: string | null, retypePassword: string | null) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -27,7 +27,7 @@ export default class User {
         return this.retypePassword;
     }
 
-    setId(id: number | null) {
+    setId(id: number) {
         this.id = id;
     }
 
