@@ -13,7 +13,10 @@ const { result} = UserService.getAllUser();
 </script>
 
 <template>
+
   <div class="container">
+
+    <router-link to="/add-user" class="btn btn-primary">Add User</router-link>
     <table class="table table-striped">
       <thead>
       <tr>

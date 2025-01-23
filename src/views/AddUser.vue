@@ -1,18 +1,18 @@
 <script setup lang="ts">
-import {reactive} from "vue";
+import {reactive, ref} from "vue";
 import User from "../models/User.ts";
 
 import {UserService} from "../services/UserService.ts";
 
-const user = reactive(new User(0, "", "", ""));
-
+const user = reactive(new User("", "", 0));
+let retypePassword = ref("");
 const {addUser} = UserService.addUser(user);
 const onSubmit = () => {
-  if(user.username === "" || user.password === "" || user.retypePassword === "")
+  if(user.username === "" || user.password === "" || retypePassword.value === "")
   {
     alert("Please type username and password.");
   }
-  else if(user.password !== user.retypePassword)
+  else if(user.password !== retypePassword.value)
   {
     alert("Password and retype password must be the same.");
   }
@@ -33,22 +33,39 @@ const onSubmit = () => {
 </script>
 
 <template>
-  <div>
-    <p>Add User</p>
-    <form @submit.prevent="onSubmit">
-      <label>Username</label><br />
-      <input type="text" v-model="user.username"/>
-      <br />
-      <label>Password</label><br />
-      <input type="password" v-model="user.password"/>
-      <br />
-      <label>Retype Password</label><br />
-      <input type="password" v-model="user.retypePassword"/>
-      <button type="submit">Submit</button>
-    </form>
+  <div class="container">
+    <div class="custom-form">
+    <h5>Add User</h5>
+    <form @submit.prevent="onSubmit" @keyup.enter="onSubmit">
+    <div class="mb-3">
+      <label class="form-label">Username</label>
+      <input type="text" class="form-control" v-model="user.username">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Password</label>
+      <input type="password" class="form-control" v-model="user.password">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Retype Password</label>
+      <input type="password" class="form-control" v-model="retypePassword">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
   </div>
+  </div>
+
 </template>
 
 <style scoped>
-
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.custom-form {
+  width: 500px;
+  margin: auto;
+}
 </style>
