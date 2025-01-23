@@ -26,4 +26,4 @@ jobs:
       run:  docker buildx build --platform linux/arm64 -t ${{ secrets.DOCKER_HUB_USERNAME }}/mini_app_fe:latest .
 
     - name: Push Docker image
-      run: docker buildx build --platform linux/arm64 --push -t ${{ secrets.DOCKER_HUB_USERNAME }}/mini_app_fe:latest
+      run: docker buildx build --platform linux/arm64 --push -t ${{ secrets.DOCKER_HUB_USERNAME }}/mini_app_fe:latest .
